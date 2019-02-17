@@ -1,7 +1,7 @@
 resource "aws_ssm_parameter" "rds_db_database" {
   name      = "/${terraform.workspace}/cs-api/rds/database/name"
   type      = "SecureString"
-  value     = "people"
+  value     = "${var.csapi_db_name}"
   overwrite = false
 
   lifecycle {
@@ -19,7 +19,7 @@ resource "aws_ssm_parameter" "rds_db_endpoint" {
 resource "aws_ssm_parameter" "user_name" {
   name      = "/${terraform.workspace}/cs-api/rds/database/user_name"
   type      = "SecureString"
-  value     = "csapi"
+  value     = "${var.csapi_db_username}"
   overwrite = false
 
   lifecycle {
